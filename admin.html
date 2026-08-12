@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guess Not — Admin</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Guess Not — Host</h1>
+  <div class="subtitle">You play too, as <b>happyboy56</b>. Anyone who picks the same as you is eliminated.</div>
+
+  <div id="loginCard" class="card">
+    <input id="passInput" type="password" placeholder="Admin passcode">
+    <button id="loginBtn">Enter</button>
+    <div id="loginError" style="color:#f87171;font-size:13px;"></div>
+  </div>
+
+  <div id="setupCard" class="card" style="display:none;">
+    <button id="createBtn">Create New Game</button>
+    <div class="big-code" id="codeDisplay" style="display:none;"></div>
+    <div id="playerCount" class="status-line"></div>
+    <button id="startGameBtn" class="secondary" style="display:none;">Start Game (Round 1)</button>
+  </div>
+
+  <div id="controlCard" class="card" style="display:none;">
+    <div class="round-badge" id="roundBadge"></div>
+
+    <div id="setupRoundBlock">
+      <div class="subtitle" style="margin-bottom:6px;">Options for this round (edit if you like):</div>
+      <input id="optionsInput">
+      <div class="subtitle" style="margin-bottom:6px;">Tap the option YOU pick for this round (kept hidden from players until you reveal):</div>
+      <div class="options-grid" id="adminPickGrid"></div>
+      <div class="status-line" id="adminPickStatus"></div>
+      <button id="launchRoundBtn" disabled>Launch Round</button>
+    </div>
+
+    <div id="liveRoundBlock" style="display:none;">
+      <div class="status-line">Your hidden pick: <b id="hiddenPickLabel"></b></div>
+      <table>
+        <thead><tr><th>Player</th><th>Picked?</th></tr></thead>
+        <tbody id="claimsBody"></tbody>
+      </table>
+      <button id="revealBtn" class="danger">Reveal & Eliminate Matches</button>
+    </div>
+
+    <div id="afterRevealBlock" style="display:none;">
+      <div class="status-line" id="revealedLine"></div>
+      <table>
+        <thead><tr><th>Player</th><th>Result</th></tr></thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+      <button id="nextRoundBtn">Next Round</button>
+      <button id="finishBtn" class="secondary">End Game & Show Final Results</button>
+    </div>
+  </div>
+
+  <div id="standingsCard" class="card">
+    <h1 style="font-size:16px;">Live Standings</h1>
+    <table>
+      <thead><tr><th>Name</th><th>Status</th></tr></thead>
+      <tbody id="standingsBody"></tbody>
+    </table>
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="game-core.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
